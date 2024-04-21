@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cko3ych44nard"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_664lp"]
+[ext_resource type="FontFile" uid="uid://dlbghev4ongqy" path="res://assets/Fonts/LuckiestGuy-Regular.ttf" id="1_hweul"]
+[ext_resource type="Texture2D" uid="uid://cbwmea3bae8t3" path="res://assets/ui/panel_beige.png" id="2_shwjh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cf8sn"]
+font = ExtResource("1_hweul")
+font_size = 72
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_664lp")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 141.0
+offset_top = 102.0
+offset_right = 407.0
+offset_bottom = 175.0
+text = "Search:"
+label_settings = SubResource("LabelSettings_cf8sn")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 177.0
+offset_top = 189.0
+offset_right = 347.0
+offset_bottom = 225.0
+placeholder_text = "Type Search terms."
+
+[node name="AddItemButton" type="TextureButton" parent="."]
+offset_left = 201.0
+offset_top = 876.0
+offset_right = 301.0
+offset_bottom = 976.0
+scale = Vector2(1.48912, 0.660217)
+texture_normal = ExtResource("2_shwjh")
+
+[node name="Label2" type="Label" parent="AddItemButton"]
+layout_mode = 0
+offset_left = 7.38689
+offset_top = 25.7491
+offset_right = 336.387
+offset_bottom = 98.7491
+scale = Vector2(0.261355, 0.795908)
+text = "Add item!"
+label_settings = SubResource("LabelSettings_cf8sn")
+
+[connection signal="pressed" from="AddItemButton" to="." method="_on_add_item_button_pressed"]
