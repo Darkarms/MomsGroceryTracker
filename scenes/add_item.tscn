@@ -113,15 +113,15 @@ scale = Vector2(1.99254, 1.92467)
 alignment = 1
 item_count = 5
 selected = 0
-popup/item_0/text = "KG"
+popup/item_0/text = "LB"
 popup/item_0/id = 0
-popup/item_1/text = "G"
+popup/item_1/text = "KG"
 popup/item_1/id = 1
-popup/item_2/text = "ML"
+popup/item_2/text = "G"
 popup/item_2/id = 2
-popup/item_3/text = "L"
+popup/item_3/text = "ML"
 popup/item_3/id = 3
-popup/item_4/text = "LB"
+popup/item_4/text = "L"
 popup/item_4/id = 4
 
 [node name="weightBox" type="SpinBox" parent="weight"]

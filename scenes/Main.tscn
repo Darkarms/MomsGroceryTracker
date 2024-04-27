@@ -14,6 +14,76 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_664lp")
 
+[node name="ProductDataScroll" type="ScrollContainer" parent="."]
+offset_left = 68.0
+offset_top = 643.0
+offset_right = 503.0
+offset_bottom = 847.0
+horizontal_scroll_mode = 0
+
+[node name="ProductDataVbox" type="VBoxContainer" parent="ProductDataScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="weightOptions" type="OptionButton" parent="ProductDataScroll/ProductDataVbox"]
+layout_mode = 2
+alignment = 1
+item_count = 5
+selected = 0
+popup/item_0/text = "LB"
+popup/item_0/id = 0
+popup/item_1/text = "KG"
+popup/item_1/id = 1
+popup/item_2/text = "G"
+popup/item_2/id = 2
+popup/item_3/text = "ML"
+popup/item_3/id = 3
+popup/item_4/text = "L"
+popup/item_4/id = 4
+
+[node name="AvgPrice" type="Label" parent="ProductDataScroll/ProductDataVbox"]
+layout_mode = 2
+text = "avg price:"
+label_settings = ExtResource("4_131ha")
+
+[node name="AvgPriceData" type="Label" parent="ProductDataScroll/ProductDataVbox/AvgPrice"]
+offset_left = 253.0
+offset_right = 422.0
+offset_bottom = 36.0
+text = "N/a"
+label_settings = ExtResource("4_131ha")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighPrice" type="Label" parent="ProductDataScroll/ProductDataVbox"]
+layout_mode = 2
+text = "high price:"
+label_settings = ExtResource("4_131ha")
+
+[node name="HighPriceData" type="Label" parent="ProductDataScroll/ProductDataVbox/HighPrice"]
+offset_left = 253.0
+offset_right = 422.0
+offset_bottom = 46.0
+text = "N/a"
+label_settings = ExtResource("4_131ha")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LowPrice" type="Label" parent="ProductDataScroll/ProductDataVbox"]
+layout_mode = 2
+text = "low price:"
+label_settings = ExtResource("4_131ha")
+
+[node name="LowPriceData" type="Label" parent="ProductDataScroll/ProductDataVbox/LowPrice"]
+offset_left = 253.0
+offset_right = 422.0
+offset_bottom = 46.0
+text = "N/a"
+label_settings = ExtResource("4_131ha")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="."]
 offset_left = 141.0
 offset_top = 35.0
@@ -40,7 +110,7 @@ alignment = 2
 visible = false
 offset_top = 70.0
 offset_right = 433.0
-offset_bottom = 449.0
+offset_bottom = 516.0
 horizontal_scroll_mode = 0
 
 [node name="Vbox" type="VBoxContainer" parent="ProductName/ScrollContainer"]
@@ -84,75 +154,8 @@ scale = Vector2(0.261355, 0.795908)
 text = "RM Entry!"
 label_settings = SubResource("LabelSettings_cf8sn")
 
-[node name="ProductDataScroll" type="ScrollContainer" parent="."]
-offset_left = 66.0
-offset_top = 210.0
-offset_right = 501.0
-offset_bottom = 825.0
-horizontal_scroll_mode = 0
-
-[node name="ProductDataVbox" type="VBoxContainer" parent="ProductDataScroll"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="weightOptions" type="OptionButton" parent="ProductDataScroll/ProductDataVbox"]
-layout_mode = 2
-alignment = 1
-item_count = 4
-selected = 0
-popup/item_0/text = "KG"
-popup/item_0/id = 0
-popup/item_1/text = "G"
-popup/item_1/id = 1
-popup/item_2/text = "ML"
-popup/item_2/id = 2
-popup/item_3/text = "L"
-popup/item_3/id = 3
-
-[node name="AvgPrice" type="Label" parent="ProductDataScroll/ProductDataVbox"]
-layout_mode = 2
-text = "avg price:"
-label_settings = ExtResource("4_131ha")
-
-[node name="AvgPriceData" type="Label" parent="ProductDataScroll/ProductDataVbox/AvgPrice"]
-offset_left = 253.0
-offset_right = 422.0
-offset_bottom = 36.0
-text = "N/a"
-label_settings = ExtResource("4_131ha")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HighPrice" type="Label" parent="ProductDataScroll/ProductDataVbox"]
-layout_mode = 2
-text = "high price:"
-label_settings = ExtResource("4_131ha")
-
-[node name="HighPriceData" type="Label" parent="ProductDataScroll/ProductDataVbox/HighPrice"]
-offset_left = 253.0
-offset_right = 422.0
-offset_bottom = 36.0
-text = "N/a"
-label_settings = ExtResource("4_131ha")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LowPrice" type="Label" parent="ProductDataScroll/ProductDataVbox"]
-layout_mode = 2
-text = "low price:"
-label_settings = ExtResource("4_131ha")
-
-[node name="LowPriceData" type="Label" parent="ProductDataScroll/ProductDataVbox/LowPrice"]
-offset_left = 253.0
-offset_right = 422.0
-offset_bottom = 36.0
-text = "N/a"
-label_settings = ExtResource("4_131ha")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="item_selected" from="ProductDataScroll/ProductDataVbox/weightOptions" to="." method="_on_weight_options_item_selected"]
 [connection signal="text_changed" from="ProductName" to="." method="_on_product_name_text_changed"]
 [connection signal="text_submitted" from="ProductName" to="." method="_on_product_name_text_submitted"]
 [connection signal="pressed" from="AddItemButton" to="." method="_on_add_item_button_pressed"]

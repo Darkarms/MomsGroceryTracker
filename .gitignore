@@ -1,2 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+Moms_Grocery_Tracker.apk.idsig
+Moms_Grocery_Tracker.apk
+Grocery_Tracker.zip
+debug.keystore
+appdata.save

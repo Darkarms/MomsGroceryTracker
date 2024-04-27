@@ -67,7 +67,7 @@ func _on_add_item_button_pressed() -> void:
 
 
 func _on_product_name_text_changed(new_text: String) -> void:
-	var buttons = vbox.get_children()
+	buttons = vbox.get_children()
 	if product_name.has_focus():
 		scroll_container.show()
 		for b in buttons:
@@ -78,10 +78,10 @@ func _on_product_name_text_changed(new_text: String) -> void:
 	
 
 
-func _on_product_name_text_submitted(new_text: String) -> void:
+func _on_product_name_text_submitted(_new_text: String) -> void:
 	if scroll_container.visible == true:
 		scroll_container.hide()
 		
-func products_option_pressed(name) -> void:
-	product_name.text = name
+func products_option_pressed(productName) -> void:
+	product_name.text = productName
 	scroll_container.hide()

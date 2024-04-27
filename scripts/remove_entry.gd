@@ -50,11 +50,11 @@ func DisplayProducts() -> void:
 			button.add_theme_font_size_override("font_size", 45)
 			v_box_entries.add_child(button)
 
-func product_entry_pressed(buttonText) -> void: 
+func product_entry_pressed(_buttonText) -> void: 
 	pass
 	
-func products_option_pressed(name) -> void:
-	product_name.text = name
+func products_option_pressed(productName) -> void:
+	product_name.text = productName
 	UpdateProducts()
 	scroll_container.hide()
 	
@@ -71,7 +71,7 @@ func _on_back_to_main_button_pressed() -> void:
 	AppManager.LoadMainScene()
 
 
-func _on_product_name_text_submitted(new_text: String) -> void:
+func _on_product_name_text_submitted(_new_text: String) -> void:
 	if scroll_container.visible == true:
 		scroll_container.hide()
 	UpdateProducts()

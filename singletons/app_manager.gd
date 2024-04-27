@@ -44,3 +44,6 @@ func LoadData() -> void:
 			
 func set_dict(key: String, value) -> void:
 	productsList[key] = value
+	
+func round_to_dec(num, digit) -> float:
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)
