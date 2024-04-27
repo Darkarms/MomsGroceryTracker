@@ -29,46 +29,6 @@ scale = Vector2(0.680788, 1.18638)
 text = "Add item!"
 label_settings = SubResource("LabelSettings_s325r")
 
-[node name="nameLabel" type="Label" parent="."]
-offset_left = 37.0
-offset_top = 197.0
-offset_right = 335.0
-offset_bottom = 262.0
-scale = Vector2(0.466021, 0.798913)
-text = "Product:"
-label_settings = ExtResource("3_w07nv")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProductName" type="LineEdit" parent="nameLabel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.481
-anchor_right = 1.481
-anchor_bottom = 0.013
-offset_left = -104.92
-offset_top = -1.0
-offset_right = 543.08
-offset_bottom = 62.025
-theme_override_fonts/font = ExtResource("1_k7yps")
-theme_override_font_sizes/font_size = 45
-placeholder_text = "Name of product..."
-alignment = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="nameLabel"]
-visible = false
-layout_mode = 0
-offset_left = 369.082
-offset_top = 62.5851
-offset_right = 1019.08
-offset_bottom = 377.585
-horizontal_scroll_mode = 0
-
-[node name="Vbox" type="VBoxContainer" parent="nameLabel/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="priceLabel" type="Label" parent="."]
 offset_left = 39.0
 offset_top = 290.0
@@ -177,7 +137,47 @@ label_settings = SubResource("LabelSettings_k5xp6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="text_changed" from="nameLabel/ProductName" to="." method="_on_product_name_text_changed"]
-[connection signal="text_submitted" from="nameLabel/ProductName" to="." method="_on_product_name_text_submitted"]
+[node name="nameLabel" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 197.0
+offset_right = 349.0
+offset_bottom = 270.0
+scale = Vector2(0.466021, 0.798913)
+text = "Product:"
+label_settings = ExtResource("3_w07nv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProductName" type="LineEdit" parent="nameLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.481
+anchor_right = 1.481
+anchor_bottom = 0.013
+offset_left = -104.92
+offset_top = -1.0
+offset_right = 543.08
+offset_bottom = 62.025
+theme_override_fonts/font = ExtResource("1_k7yps")
+theme_override_font_sizes/font_size = 45
+placeholder_text = "Name of product..."
+alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="nameLabel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 63.0
+offset_right = 1009.0
+offset_bottom = 378.0
+horizontal_scroll_mode = 0
+
+[node name="Vbox" type="VBoxContainer" parent="nameLabel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [connection signal="pressed" from="AddItemButton" to="." method="_on_add_item_button_pressed"]
 [connection signal="pressed" from="BackToMainButton" to="." method="_on_back_to_main_button_pressed"]
+[connection signal="text_changed" from="nameLabel/ProductName" to="." method="_on_product_name_text_changed"]
+[connection signal="text_submitted" from="nameLabel/ProductName" to="." method="_on_product_name_text_submitted"]

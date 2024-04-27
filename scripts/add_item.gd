@@ -48,7 +48,7 @@ func _on_add_item_button_pressed() -> void:
 	var weightTypeID = weight_options.get_selected_id()
 	var weightType = weight_options.get_item_text(weightTypeID)
 	
-	if productWeight != 0.01 and productPrice != 0.01 and productName != "":
+	if productWeight != 0.01 and productPrice != 0.01 and productName != "" and weightTypeID != -1:
 		allValuesSet = true
 	if allValuesSet:
 		if not productsList.has(productName):

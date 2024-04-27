@@ -173,7 +173,7 @@ func AddButton(text) -> void:
 	button.text = text
 	button.pressed.connect(products_option_pressed.bind(text))
 	button.add_theme_font_override("font", buttonFont)
-	button.add_theme_font_size_override("font_size", 45)
+	button.add_theme_font_size_override("font_size", 35)
 	vbox.add_child(button)
 	
 func _on_product_name_text_changed(new_text: String) -> void:
