@@ -3,17 +3,12 @@
 [ext_resource type="FontFile" uid="uid://dlbghev4ongqy" path="res://assets/Fonts/LuckiestGuy-Regular.ttf" id="1_k7yps"]
 [ext_resource type="Script" path="res://scripts/add_item.gd" id="1_ok36x"]
 [ext_resource type="Texture2D" uid="uid://cbwmea3bae8t3" path="res://assets/ui/panel_beige.png" id="3_fkx4q"]
+[ext_resource type="LabelSettings" uid="uid://besgv2hn7ncaq" path="res://assets/Fonts/MainLabels.tres" id="3_w07nv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s325r"]
 font = ExtResource("1_k7yps")
 font_size = 72
 shadow_size = 20
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_xsn67"]
-font = ExtResource("1_k7yps")
-font_size = 74
-shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_k5xp6"]
@@ -41,7 +36,7 @@ offset_right = 335.0
 offset_bottom = 262.0
 scale = Vector2(0.466021, 0.798913)
 text = "Product:"
-label_settings = SubResource("LabelSettings_xsn67")
+label_settings = ExtResource("3_w07nv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -51,13 +46,28 @@ anchors_preset = -1
 anchor_left = 1.481
 anchor_right = 1.481
 anchor_bottom = 0.013
-offset_left = -22.92
-offset_top = -3.0
-offset_right = 417.08
-offset_bottom = 29.025
-scale = Vector2(1.33326, 1.75163)
+offset_left = -104.92
+offset_top = -1.0
+offset_right = 543.08
+offset_bottom = 62.025
+theme_override_fonts/font = ExtResource("1_k7yps")
+theme_override_font_sizes/font_size = 45
 placeholder_text = "Name of product..."
 alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="nameLabel"]
+visible = false
+layout_mode = 0
+offset_left = 369.082
+offset_top = 62.5851
+offset_right = 1019.08
+offset_bottom = 377.585
+horizontal_scroll_mode = 0
+
+[node name="Vbox" type="VBoxContainer" parent="nameLabel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="priceLabel" type="Label" parent="."]
 offset_left = 39.0
@@ -66,8 +76,7 @@ offset_right = 249.0
 offset_bottom = 365.0
 scale = Vector2(0.466021, 0.798913)
 text = "price:"
-label_settings = SubResource("LabelSettings_xsn67")
-horizontal_alignment = 1
+label_settings = ExtResource("3_w07nv")
 vertical_alignment = 1
 
 [node name="priceBox" type="SpinBox" parent="priceLabel"]
@@ -90,11 +99,11 @@ offset_right = 321.0
 offset_bottom = 450.0
 scale = Vector2(0.466021, 0.798913)
 text = "weight:"
-label_settings = SubResource("LabelSettings_xsn67")
+label_settings = ExtResource("3_w07nv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="weight"]
+[node name="weightOptions" type="OptionButton" parent="weight"]
 layout_mode = 0
 offset_left = 302.561
 offset_top = -2.50341
@@ -102,7 +111,7 @@ offset_right = 371.561
 offset_bottom = 28.4966
 scale = Vector2(1.99254, 1.92467)
 alignment = 1
-item_count = 4
+item_count = 5
 selected = 0
 popup/item_0/text = "KG"
 popup/item_0/id = 0
@@ -112,6 +121,8 @@ popup/item_2/text = "ML"
 popup/item_2/id = 2
 popup/item_3/text = "L"
 popup/item_3/id = 3
+popup/item_4/text = "LB"
+popup/item_4/id = 4
 
 [node name="weightBox" type="SpinBox" parent="weight"]
 layout_mode = 0
@@ -165,5 +176,7 @@ label_settings = SubResource("LabelSettings_k5xp6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="text_changed" from="nameLabel/ProductName" to="." method="_on_product_name_text_changed"]
+[connection signal="text_submitted" from="nameLabel/ProductName" to="." method="_on_product_name_text_submitted"]
 [connection signal="pressed" from="AddItemButton" to="." method="_on_add_item_button_pressed"]
 [connection signal="pressed" from="BackToMainButton" to="." method="_on_back_to_main_button_pressed"]

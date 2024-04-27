@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dmtwtlo02l015"]
+
+[node name="DisplayProductInfo" type="Node2D"]
