@@ -139,6 +139,14 @@ func ConvertToWeightType(weightType) -> Array:
 						priceEnd = priceStart / weightEnd
 					else:
 						priceEnd = priceStart * weightEnd
+			"Unit":
+				if convertFrom == "G" or convertFrom == "KG" or convertFrom == "L" or convertFrom == "LB" or convertFrom == "ML":
+					continue
+				elif convertFrom == "Unit":
+					if weightEnd >= 1.0:
+						priceEnd = priceStart / weightEnd
+					else:
+						priceEnd = priceStart * weightEnd
 		if not priceEnd:
 			continue
 		priceEnd = AppManager.round_to_dec(priceEnd, 2)
@@ -154,6 +162,7 @@ func ConvertToWeightType(weightType) -> Array:
 			priceAvg = priceEnd
 		else:
 			priceAvg = (priceAvg + priceEnd) / 2
+			priceAvg = AppManager.round_to_dec(priceAvg, 2)
 	avgMinMax.append(priceAvg)
 	avgMinMax.append(priceLow)
 	avgMinMax.append(priceHigh)

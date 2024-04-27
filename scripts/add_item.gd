@@ -54,8 +54,9 @@ func _on_add_item_button_pressed() -> void:
 		if not productsList.has(productName):
 			productsList[productName] = {}
 			productsList[productName]["price_weight"] = []
+			AddButton(productName)
 		productsList[productName]["price_weight"].append([productPrice, productWeight, weightType])
-		AddButton(productName)
+		
 		AppManager.SaveData()
 		#reset values for next addition
 		productName = ""

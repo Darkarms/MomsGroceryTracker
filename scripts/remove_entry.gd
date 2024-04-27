@@ -61,9 +61,14 @@ func products_option_pressed(productName) -> void:
 func _on_remove_button_pressed() -> void:
 	var checkBoxs = v_box_entries.get_children()
 	var productEntries = productsList[product_name.text]["price_weight"]
-	for i in range(checkBoxs.size()):
+	var i = 0
+	while i < checkBoxs.size():
 		if productEntries and checkBoxs[i].button_pressed == true:
 			productEntries.remove_at(i)
+			v_box_entries.remove_child(checkBoxs[i])
+			checkBoxs.remove_at(i)
+		else:
+			i += 1
 	UpdateProducts()
 	AppManager.SaveData()
 
