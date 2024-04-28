@@ -4,10 +4,11 @@ extends Node2D
 @onready var vbox: VBoxContainer = $ProductName/ScrollContainer/Vbox
 @onready var scroll_container: ScrollContainer = $ProductName/ScrollContainer
 @onready var productsList = AppManager.GetProductsList()
-@onready var weight_options: OptionButton = $ProductDataScroll/ProductDataVbox/weightOptions
+@onready var weight_options: OptionButton = $ProductDataScroll/ProductDataVbox/MetricLabel/weightOptions
 @onready var avg_price_data: Label = $ProductDataScroll/ProductDataVbox/AvgPrice/AvgPriceData
 @onready var low_price_data: Label = $ProductDataScroll/ProductDataVbox/LowPrice/LowPriceData
 @onready var high_price_data: Label = $ProductDataScroll/ProductDataVbox/HighPrice/HighPriceData
+@onready var number_of_units: SpinBox = $ProductDataScroll/ProductDataVbox/MetricLabel/UnitsLabel/NumberOfUnits
 
 var buttonFont = load("res://assets/Fonts/LuckiestGuy-Regular.ttf")
 var buttons = []
@@ -53,7 +54,7 @@ func ConvertToWeightType(weightType) -> Array:
 		match weightType:
 			"LB":
 				if convertFrom == "L" or convertFrom == "ML":
-					pass
+					continue
 				elif convertFrom == "KG":
 					weightEnd *= 2.20462
 					if weightEnd >= 1.0:
@@ -73,7 +74,7 @@ func ConvertToWeightType(weightType) -> Array:
 						priceEnd = priceStart * weightEnd
 			"KG":
 				if convertFrom == "L" or convertFrom == "ML":
-					pass
+					continue
 				elif convertFrom == "LB":
 					weightEnd /= 2.20462
 					if weightEnd >= 1.0:
@@ -93,7 +94,7 @@ func ConvertToWeightType(weightType) -> Array:
 						priceEnd = priceStart * weightEnd
 			"G":
 				if convertFrom == "L" or convertFrom == "ML":
-					pass
+					continue
 				elif convertFrom == "LB":
 					weightEnd *= 453.6
 					if weightEnd >= 1.0:
@@ -113,7 +114,7 @@ func ConvertToWeightType(weightType) -> Array:
 						priceEnd = priceStart * weightEnd
 			"ML":
 				if convertFrom == "G" or convertFrom == "KG":
-					pass
+					continue
 				elif convertFrom == "L":
 					weightEnd *= 1000.0
 					if weightEnd >= 1.0:
@@ -127,7 +128,7 @@ func ConvertToWeightType(weightType) -> Array:
 						priceEnd = priceStart * weightEnd
 			"L":
 				if convertFrom == "G" or convertFrom == "KG":
-					pass
+					continue
 				elif convertFrom == "ML":
 					weightEnd /= 1000.0
 					if weightEnd >= 1.0:
@@ -149,6 +150,7 @@ func ConvertToWeightType(weightType) -> Array:
 						priceEnd = priceStart * weightEnd
 		if not priceEnd:
 			continue
+		priceEnd *= number_of_units.value
 		priceEnd = AppManager.round_to_dec(priceEnd, 2)
 		if not priceLow:
 			priceLow = priceEnd
@@ -210,3 +212,8 @@ func products_option_pressed(productName) -> void:
 
 func _on_weight_options_item_selected(_index: int) -> void:
 	RetrieveAndProccessData()
+
+
+func _on_spin_box_value_changed(_value: float) -> void:
+	if weight_options.get_selected_id() != -1 and product_name.text in productsList:
+		RetrieveAndProccessData()
