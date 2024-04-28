@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://qnht5hpx5rrf"]
+[gd_scene load_steps=8 format=3 uid="uid://qnht5hpx5rrf"]
 
 [ext_resource type="FontFile" uid="uid://dlbghev4ongqy" path="res://assets/Fonts/LuckiestGuy-Regular.ttf" id="1_k7yps"]
 [ext_resource type="Script" path="res://scripts/add_item.gd" id="1_ok36x"]
 [ext_resource type="Texture2D" uid="uid://cbwmea3bae8t3" path="res://assets/ui/panel_beige.png" id="3_fkx4q"]
 [ext_resource type="LabelSettings" uid="uid://besgv2hn7ncaq" path="res://assets/Fonts/MainLabels.tres" id="3_w07nv"]
+[ext_resource type="LabelSettings" uid="uid://ugp816oeclr8" path="res://assets/Fonts/MainSceneLabels.tres" id="5_yf534"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s325r"]
 font = ExtResource("1_k7yps")
@@ -177,7 +178,37 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="SuccessTexture" type="TextureRect" parent="."]
+visible = false
+offset_left = 55.0
+offset_top = 744.0
+offset_right = 495.0
+offset_bottom = 860.0
+texture = ExtResource("3_fkx4q")
+
+[node name="SuccessLabel" type="Label" parent="SuccessTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 14.0
+offset_right = -54.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Successfully 
+added Product!"
+label_settings = ExtResource("5_yf534")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuccessOverlayTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="pressed" from="AddItemButton" to="." method="_on_add_item_button_pressed"]
 [connection signal="pressed" from="BackToMainButton" to="." method="_on_back_to_main_button_pressed"]
 [connection signal="text_changed" from="nameLabel/ProductName" to="." method="_on_product_name_text_changed"]
 [connection signal="text_submitted" from="nameLabel/ProductName" to="." method="_on_product_name_text_submitted"]
+[connection signal="timeout" from="SuccessOverlayTimer" to="." method="_on_success_overlay_timer_timeout"]

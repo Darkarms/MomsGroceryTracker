@@ -6,6 +6,8 @@ extends Node2D
 @onready var weight_options: OptionButton = $weight/weightOptions
 @onready var scroll_container: ScrollContainer = $nameLabel/ScrollContainer
 @onready var vbox: VBoxContainer = $nameLabel/ScrollContainer/Vbox
+@onready var success_texture: TextureRect = $SuccessTexture
+@onready var success_overlay_timer: Timer = $SuccessOverlayTimer
 
 @onready var productsList = AppManager.GetProductsList()
 
@@ -62,6 +64,14 @@ func _on_add_item_button_pressed() -> void:
 		productName = ""
 		productWeight = 0.01
 		productPrice = 0.01
+		product_name.text = productName
+		weight_box.value = productWeight
+		price_box.value = productPrice
+		
+		#show confirmation and start timer to remove it
+		success_texture.show()
+		success_overlay_timer.start()
+		
 			
 		
 		
@@ -86,3 +96,7 @@ func _on_product_name_text_submitted(_new_text: String) -> void:
 func products_option_pressed(productName) -> void:
 	product_name.text = productName
 	scroll_container.hide()
+
+
+func _on_success_overlay_timer_timeout() -> void:
+	success_texture.hide()
