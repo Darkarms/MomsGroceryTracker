@@ -126,5 +126,6 @@ size_flags_vertical = 3
 
 [connection signal="pressed" from="RemoveButton" to="." method="_on_remove_button_pressed"]
 [connection signal="pressed" from="BackToMainButton" to="." method="_on_back_to_main_button_pressed"]
+[connection signal="focus_entered" from="nameLabel/ProductName" to="." method="_on_product_name_focus_entered"]
 [connection signal="text_changed" from="nameLabel/ProductName" to="." method="_on_product_name_text_changed"]
 [connection signal="text_submitted" from="nameLabel/ProductName" to="." method="_on_product_name_text_submitted"]

@@ -27,7 +27,14 @@ func AddButton(text) -> void:
 	button.add_theme_font_size_override("font_size", 35)
 	vbox.add_child(button)
 	
-	
+func removeProductFromList(nameOfProduct) -> void:
+	var buttons = vbox.get_children()
+	for b in buttons:
+		if b.text == nameOfProduct:
+			vbox.remove_child(b)
+	productsList.erase(nameOfProduct)
+	product_name.text = ""
+			
 func UpdateProducts() -> void:
 	ClearProductEntries()
 	DisplayProducts()
@@ -69,6 +76,9 @@ func _on_remove_button_pressed() -> void:
 			checkBoxs.remove_at(i)
 		else:
 			i += 1
+	print(productEntries.size())
+	if productEntries.size() == 0:
+		removeProductFromList(product_name.text)
 	UpdateProducts()
 	AppManager.SaveData()
 
@@ -91,3 +101,7 @@ func _on_product_name_text_changed(new_text: String) -> void:
 				b.show()
 			else:
 				b.hide()
+
+
+func _on_product_name_focus_entered() -> void:
+	pass # Replace with function body.
